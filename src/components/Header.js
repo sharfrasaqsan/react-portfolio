@@ -1,11 +1,10 @@
+import { useAuth } from "../contexts/AuthContext";
 import Lougout from "./Logout";
 
 const Header = () => {
-  return (
-    <div>
-      <Lougout />
-    </div>
-  );
+  const { user } = useAuth();
+
+  return <div>{user ? <Lougout /> : null}</div>;
 };
 
 export default Header;
