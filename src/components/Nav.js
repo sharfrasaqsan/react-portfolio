@@ -23,7 +23,7 @@ const Nav = () => {
           <Link to="/contact">Contact</Link>
         </li>
         <li>
-          <Link to="/project/add-project">Add Project</Link>
+          <Link to="/project/create-project">CreateProject</Link>
         </li>
         <li>
           <Link to="/admin">Admin Panel</Link>
