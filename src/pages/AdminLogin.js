@@ -7,8 +7,17 @@ import { useAuth } from "../contexts/AuthContext";
 import { doc, getDoc } from "firebase/firestore";
 
 const AdminLogin = () => {
-  const { email, setEmail, password, setPassword, navigate } = useData();
+  const { email, setEmail, password, setPassword, navigate, loading } =
+    useData();
   const { setUser } = useAuth();
+
+  if (loading) {
+    return (
+      <div className="d-flex justify-content-center align-items-center vh-100">
+        <div className="spinner-border text-primary" role="status"></div>
+      </div>
+    );
+  }
 
   const handleAdminLogin = async (e) => {
     e.preventDefault();

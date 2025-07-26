@@ -13,6 +13,20 @@ export const DataProvider = ({ children }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const [project, setProject] = useState({
+    title: "",
+    thumbnail: "",
+    shortDescription: "",
+    description: "",
+    liveURL: "",
+    githubURL: "",
+    techStack: [],
+    features: "",
+    createdAt: "",
+    updatedAt: "",
+    isFeatured: true,
+  });
+
   const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
@@ -61,6 +75,8 @@ export const DataProvider = ({ children }) => {
         setEmail,
         password,
         setPassword,
+        project,
+        setProject,
         loading,
         navigate,
       }}

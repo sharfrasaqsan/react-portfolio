@@ -1,7 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useAuth } from "../contexts/AuthContext";
 
 const Nav = () => {
+  const { user } = useAuth();
+
   return (
     <nav>
       <h1>Mohamed Sharfiras</h1>
@@ -25,9 +28,11 @@ const Nav = () => {
         <li>
           <Link to="/admin">Admin Panel</Link>
         </li>
-        <li>
-          <Link to="/login">Admin Login</Link>
-        </li>
+        {user ? null : (
+          <li>
+            <Link to="/login">Admin Login</Link>
+          </li>
+        )}
       </ul>
     </nav>
   );

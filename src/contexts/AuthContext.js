@@ -21,8 +21,6 @@ export const AuthProvider = ({ children }) => {
             setUser(null);
             toast.error("You are not authorized as admin.");
           }
-          setUser(null);
-          setLoading(false);
         } catch (error) {
           toast.error("Failed to fetch user", error.message);
         } finally {
@@ -37,8 +35,16 @@ export const AuthProvider = ({ children }) => {
     return () => unsubscribe();
   }, []);
 
+  if (loading) {
+    return (
+      <div className="d-flex justify-content-center align-items-center vh-100">
+        <div className="spinner-border text-primary" role="status"></div>
+      </div>
+    );
+  }
+
   return (
-    <AuthContext.Provider value={{ user, setUser, loading }}>
+    <AuthContext.Provider value={{ user, setUser }}>
       {children}
     </AuthContext.Provider>
   );
