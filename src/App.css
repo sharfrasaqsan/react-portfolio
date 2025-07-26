@@ -1,38 +1,115 @@
-.App {
-  text-align: center;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Card container improvements */
+.card {
+  background-color: #ffffff; /* ensure white background */
+  border: none; /* remove default border for cleaner look */
+  border-radius: 1rem; /* smoother rounded corners */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12); /* subtle shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.18);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+/* Image styling */
+.card-img-top {
+  height: 180px;
+  object-fit: cover;
+  border-top-left-radius: 1rem;
+  border-top-right-radius: 1rem;
+  transition: transform 0.3s ease;
+}
+
+.card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+/* Card body */
+.card-body {
+  padding: 1.5rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+/* Title styling */
+.card-title {
+  font-weight: 700;
+  font-size: 1.25rem;
+  color: #222;
+  margin-bottom: 0.75rem;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+/* Description styling */
+.card-text {
+  color: #555;
+  flex-grow: 1;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+/* Tech stack styling */
+.fst-italic.text-muted {
+  font-style: italic;
+  color: #777;
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+/* Buttons container */
+.d-flex.gap-2.mt-auto {
+  gap: 1rem !important;
+}
+
+/* Primary button */
+.btn-primary {
+  border-radius: 50px; /* pill shape */
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: #0056b3;
+  box-shadow: 0 6px 20px rgba(0, 86, 179, 0.5);
+}
+
+/* Outline-primary button */
+.btn-outline-primary {
+  border-radius: 50px;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  color: #0d6efd;
+  border-width: 2px;
+  transition: all 0.3s ease;
+}
+
+.btn-outline-primary:hover,
+.btn-outline-primary:focus {
+  background-color: #0d6efd;
+  color: #fff !important;
+  border-color: #0d6efd;
+  box-shadow: 0 6px 20px rgba(13, 110, 253, 0.5);
+}
+
+/* Responsive tweaks */
+@media (max-width: 576px) {
+  .card-title {
+    font-size: 1.1rem;
   }
-  to {
-    transform: rotate(360deg);
+
+  .btn-primary,
+  .btn-outline-primary {
+    font-size: 0.9rem;
+    padding: 0.5rem;
   }
 }
