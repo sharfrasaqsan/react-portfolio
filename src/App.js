@@ -11,7 +11,7 @@ import ProjectDetails from "./pages/ProjectDetails";
 import Contact from "./pages/Contact";
 import AdminLogin from "./pages/AdminLogin";
 import AdminPanel from "./pages/AdminPanel";
-import AddProject from "./pages/AddProject";
+import CreateProject from "./pages/CreateProject";
 import NotFound from "./pages/NotFound";
 import { PrivateRoute } from "./utils/PrivateRoute";
 
@@ -27,10 +27,10 @@ function App() {
         <Route path="/projects" element={<Projects />} />
         <Route path="/project/:id" element={<ProjectDetails />} />
         <Route
-          path="/project/add-project"
+          path="/project/create-project"
           element={
             <PrivateRoute>
-              <AddProject />
+              <CreateProject />
             </PrivateRoute>
           }
         />
