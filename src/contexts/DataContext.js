@@ -20,9 +20,21 @@ export const DataProvider = ({ children }) => {
     description: "",
     liveURL: "",
     githubURL: "",
-    techStack: [],
+    techStack: "",
     features: "",
     createdAt: "",
+    updatedAt: "",
+    isFeatured: true,
+  });
+  const [editProject, setEditProject] = useState({
+    title: "",
+    thumbnail: "",
+    shortDescription: "",
+    description: "",
+    liveURL: "",
+    githubURL: "",
+    techStack: "",
+    features: "",
     updatedAt: "",
     isFeatured: true,
   });
@@ -71,12 +83,15 @@ export const DataProvider = ({ children }) => {
       value={{
         admin,
         projects,
+        setProjects,
         email,
         setEmail,
         password,
         setPassword,
         project,
         setProject,
+        editProject,
+        setEditProject,
         loading,
         navigate,
       }}
