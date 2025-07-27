@@ -104,7 +104,10 @@ const AboutMe = () => {
       <section className="mb-5">
         <h4 className="fw-semibold mb-3">Education</h4>
         <p>
-          <strong>BICT (Hons) – Software Systems</strong>
+          <strong>
+            BICT (Hons) – Bachelor of Information and Communication Technology
+            (Honors) – Specialization in Software Systems
+          </strong>
           <br />
           University of Kelaniya, 2018 – 2022
           <br />
