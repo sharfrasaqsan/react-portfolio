@@ -101,6 +101,35 @@
   box-shadow: 0 6px 20px rgba(13, 110, 253, 0.5);
 }
 
+/* Primary button */
+.btn-warning {
+  border-radius: 50px;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 4px 12px rgba(255, 193, 7, 0.3);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-warning:hover,
+.btn-warning:focus {
+  background-color: #ffc107;
+  box-shadow: 0 6px 20px rgba(255, 193, 7, 0.5);
+}
+
+.btn-danger {
+  border-radius: 50px;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.btn-danger:hover,
+.btn-danger:focus {
+  background-color: #dc3545;
+  box-shadow: 0 6px 20px rgba(220, 53, 69, 0.5);
+}
+
 /* Responsive tweaks */
 @media (max-width: 576px) {
   .card-title {
@@ -108,7 +137,9 @@
   }
 
   .btn-primary,
-  .btn-outline-primary {
+  .btn-outline-primary,
+  .btn-warning,
+  .btn-danger {
     font-size: 0.9rem;
     padding: 0.5rem;
   }

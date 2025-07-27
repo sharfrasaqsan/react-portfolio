@@ -22,7 +22,7 @@ const ProjectCard = ({ project }) => {
               {project.shortDescription}
             </p>
             <p className="fst-italic text-muted small mb-4">
-              {project.techStack.join(", ")}
+              {project.techStack}
             </p>
           </Link>
 
@@ -36,7 +36,7 @@ const ProjectCard = ({ project }) => {
               Live Demo
             </a>
             <a
-              href={project.githubRepo}
+              href={project.githubURL}
               target="_blank"
               rel="noreferrer"
               className="btn btn-outline-primary w-100"

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth, db } from "../firebase";
 import { useData } from "../contexts/DataContext";
@@ -10,6 +10,8 @@ const AdminLogin = () => {
   const { email, setEmail, password, setPassword, navigate, loading } =
     useData();
   const { setUser } = useAuth();
+
+  const [btnLoading, setBtnLoading] = useState(false);
 
   if (loading) {
     return (
@@ -32,6 +34,7 @@ const AdminLogin = () => {
       return;
     }
 
+    setBtnLoading(true);
     try {
       // Authenticate user
       const userCredential = await signInWithEmailAndPassword(
@@ -56,6 +59,8 @@ const AdminLogin = () => {
       navigate("/admin");
     } catch (err) {
       toast.error("Login failed: " + err.message);
+    } finally {
+      setBtnLoading(false);
     }
   };
 
@@ -128,8 +133,20 @@ const AdminLogin = () => {
           type="submit"
           className="btn btn-primary w-100 mb-3"
           style={{ fontWeight: "600" }}
+          disabled={btnLoading}
         >
-          Login
+          {btnLoading ? (
+            <>
+              <span
+                className="spinner-border spinner-border-sm me-2"
+                role="status"
+                aria-hidden="true"
+              ></span>
+              Login...
+            </>
+          ) : (
+            "Login"
+          )}
         </button>
 
         <div className="text-center">

@@ -1,7 +1,15 @@
+import { toast } from "react-toastify";
 import { useData } from "../contexts/DataContext";
+import { format } from "date-fns";
+import { addDoc, collection } from "firebase/firestore";
+import { db } from "../firebase";
+import { useState } from "react";
 
 const AddProject = () => {
-  const { loading, project, setProject } = useData();
+  const { loading, project, setProject, projects, setProjects, navigate } =
+    useData();
+
+  const [btnLoading, setBtnLoading] = useState(false);
 
   if (loading) {
     return (
@@ -20,10 +28,66 @@ const AddProject = () => {
   }
 
   const handleProject = (e) => {
-    setProject((prevProject) => ({
-      ...prevProject,
-      [e.target.name]: e.target.value,
+    const { name, value } = e.target;
+
+    setProject((prev) => ({
+      ...prev,
+      [name]:
+        name === "techStack"
+          ? value.split(",").map((item) => item.trim()) // convert to array
+          : name === "isFeatured"
+          ? value === "true"
+          : value,
     }));
+  };
+
+  const handleCreateProject = async (e) => {
+    e.preventDefault();
+
+    if (!project) {
+      toast.error("Please fill in all fields.");
+      return;
+    }
+
+    setBtnLoading(true);
+    try {
+      const newProject = {
+        ...project,
+        createdAt: format(new Date(), "yyyy-MM-dd"),
+      };
+
+      const res = await addDoc(collection(db, "projects"), newProject);
+
+      if (!res) {
+        toast.error("Error creating project!");
+        return;
+      }
+
+      setProjects([...projects, { id: res.id, ...newProject }]);
+      toast.success("Project created successfully.");
+      setProject({
+        title: "",
+        thumbnail: "",
+        shortDescription: "",
+        description: "",
+        liveURL: "",
+        githubURL: "",
+        techStack: [],
+        features: "",
+        isFeatured: true,
+      });
+      navigate(`/project/${res.id}`);
+    } catch (err) {
+      toast.error("Error creating project: " + err.message);
+    } finally {
+      setBtnLoading(false);
+    }
+  };
+
+  const cencelCreate = () => {
+    navigate("/projects");
+    toast.warning("Project creation canceled.");
+    return;
   };
 
   return (
@@ -31,7 +95,10 @@ const AddProject = () => {
       <div className="container">
         <h2 className="mb-5 text-center fw-bold text-dark">Create Project</h2>
 
-        <form className="row g-4 shadow-sm p-4 bg-white rounded">
+        <form
+          className="row g-4 shadow-sm p-4 bg-white rounded"
+          onSubmit={handleCreateProject}
+        >
           <div className="col-md-6">
             <label className="form-label">Project Title</label>
             <input
@@ -41,6 +108,8 @@ const AddProject = () => {
               name="title"
               value={project.title || ""}
               onChange={handleProject}
+              autoFocus
+              required
             />
           </div>
 
@@ -53,30 +122,34 @@ const AddProject = () => {
               name="thumbnail"
               value={project.thumbnail || ""}
               onChange={handleProject}
+              required
             />
           </div>
 
-          <div className="col-md-6">
+          <div className="col-md-12">
             <label className="form-label">Short Description</label>
-            <input
-              type="text"
+            <textarea
+              name="shortDescription"
               className="form-control"
               placeholder="Short Description"
-              name="shortDescription"
               value={project.shortDescription || ""}
               onChange={handleProject}
+              rows="3"
+              style={{ resize: "none" }}
+              required
             />
           </div>
 
-          <div className="col-md-6">
+          <div className="col-md-12">
             <label className="form-label">Full Description</label>
-            <input
-              type="text"
+            <textarea
+              name="description"
               className="form-control"
               placeholder="Description"
-              name="description"
               value={project.description || ""}
               onChange={handleProject}
+              rows="10"
+              required
             />
           </div>
 
@@ -111,8 +184,9 @@ const AddProject = () => {
               className="form-control"
               placeholder="e.g., React, Firebase"
               name="techStack"
-              value={project.techStack || ""}
+              value={project.techStack || []}
               onChange={handleProject}
+              required
             />
           </div>
 
@@ -125,12 +199,50 @@ const AddProject = () => {
               name="features"
               value={project.features || ""}
               onChange={handleProject}
+              required
             />
           </div>
 
+          <div className="col-md-6">
+            <label className="form-label">Is Featured?</label>
+            <select
+              className="form-select"
+              name="isFeatured"
+              value={project.isFeatured || false}
+              onChange={handleProject}
+              required
+            >
+              <option value="true">Yes</option>
+              <option value="false">No</option>
+            </select>
+          </div>
+
           <div className="col-12 text-center mt-4">
-            <button type="submit" className="btn btn-primary px-5">
-              Create
+            <button
+              type="submit"
+              className="btn btn-primary px-5"
+              disabled={btnLoading}
+            >
+              {btnLoading ? (
+                <>
+                  <span
+                    className="spinner-border spinner-border-sm me-2"
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
+                  Creating...
+                </>
+              ) : (
+                "Create"
+              )}
+            </button>
+
+            <button
+              type="button"
+              className="btn btn-danger ms-3 px-5"
+              onClick={cencelCreate}
+            >
+              Cencel
             </button>
           </div>
         </form>

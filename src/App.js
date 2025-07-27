@@ -14,6 +14,7 @@ import AdminPanel from "./pages/AdminPanel";
 import CreateProject from "./pages/CreateProject";
 import NotFound from "./pages/NotFound";
 import { PrivateRoute } from "./utils/PrivateRoute";
+import EdifProject from "./pages/EdifProject";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
             </PrivateRoute>
           }
         />
+        <Route path="/project/:id/edit" element={<EdifProject />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<AdminLogin />} />
         <Route
@@ -49,7 +51,7 @@ function App() {
 
       <Footer />
       <ToastContainer
-        position="top-left"
+        position="top-center"
         autoClose={3000}
         hideProgressBar={false}
         newestOnTop
