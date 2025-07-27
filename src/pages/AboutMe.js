@@ -3,12 +3,10 @@ import {
   FaHtml5,
   FaCss3Alt,
   FaJs,
-  FaPhp,
   FaWordpress,
   FaGithub,
   FaFigma,
   FaCheckCircle,
-  FaDatabase,
 } from "react-icons/fa";
 import {
   SiTailwindcss,
