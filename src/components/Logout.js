@@ -28,8 +28,7 @@ const Logout = () => {
     <>
       <button
         type="submit"
-        className="btn btn-primary mb-3"
-        style={{ fontWeight: "600" }}
+        className="btn btn-danger"
         disabled={btnLoading}
         onClick={handleLogout}
       >

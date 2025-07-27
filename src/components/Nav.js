@@ -1,39 +1,62 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 
 const Nav = () => {
   const { user } = useAuth();
 
   return (
-    <nav>
-      <h1>Mohamed Sharfiras</h1>
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+      <div className="container">
+        <button
+          className="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
 
-      <ul>
-        <li>
-          <Link to="/">Home</Link>
-        </li>
-        <li>
-          <Link to="/about">About</Link>
-        </li>
-        <li>
-          <Link to="/projects">Projects</Link>
-        </li>
-        <li>
-          <Link to="/contact">Contact</Link>
-        </li>
-        <li>
-          <Link to="/project/create-project">CreateProject</Link>
-        </li>
-        <li>
-          <Link to="/admin">Admin Panel</Link>
-        </li>
-        {user ? null : (
-          <li>
-            <Link to="/login">Admin Login</Link>
-          </li>
-        )}
-      </ul>
+        <div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav ms-auto">
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/">
+                Home
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/about">
+                About
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/projects">
+                Projects
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/contact">
+                Contact
+              </NavLink>
+            </li>
+            <li className="nav-item">
+              <NavLink className="nav-link" to="/admin">
+                Admin Panel
+              </NavLink>
+            </li>
+            {!user && (
+              <li className="nav-item">
+                <NavLink className="nav-link" to="/login">
+                  Admin Login
+                </NavLink>
+              </li>
+            )}
+          </ul>
+        </div>
+      </div>
     </nav>
   );
 };

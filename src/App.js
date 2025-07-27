@@ -1,5 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { ToastContainer, Bounce } from "react-toastify";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -28,14 +30,14 @@ function App() {
         <Route path="/projects" element={<Projects />} />
         <Route path="/project/:id" element={<ProjectDetails />} />
         <Route
-          path="/project/create-project"
+          path="/admin/create-project"
           element={
             <PrivateRoute>
               <CreateProject />
             </PrivateRoute>
           }
         />
-        <Route path="/project/:id/edit" element={<EdifProject />} />
+        <Route path="/admin/project/edit/:id" element={<EdifProject />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<AdminLogin />} />
         <Route
