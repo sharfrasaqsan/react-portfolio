@@ -1,4 +1,4 @@
-import { collection, getDocs } from "firebase/firestore";
+import { collection, deleteDoc, doc, getDocs } from "firebase/firestore";
 import { createContext, useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { db } from "../firebase";
@@ -20,7 +20,7 @@ export const DataProvider = ({ children }) => {
     description: "",
     liveURL: "",
     githubURL: "",
-    techStack: "",
+    techStack: [],
     features: "",
     createdAt: "",
     updatedAt: "",
@@ -33,13 +33,14 @@ export const DataProvider = ({ children }) => {
     description: "",
     liveURL: "",
     githubURL: "",
-    techStack: "",
+    techStack: [],
     features: "",
     updatedAt: "",
     isFeatured: true,
   });
 
   const [loading, setLoading] = useState(true);
+  const [btnLoading, setBtnLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -78,6 +79,20 @@ export const DataProvider = ({ children }) => {
     fetchProjects();
   }, []);
 
+  const handleProjectDelete = async (projectId) => {
+    setBtnLoading(true);
+    try {
+      await deleteDoc(doc(db, "projects", projectId));
+      setProjects(projects.filter((project) => project.id !== projectId));
+      toast.success("Project deleted successfully.");
+      navigate("/projects");
+    } catch (error) {
+      toast.error("Error deleting project.");
+    } finally {
+      setBtnLoading(false);
+    }
+  };
+
   return (
     <DataContext.Provider
       value={{
@@ -94,6 +109,9 @@ export const DataProvider = ({ children }) => {
         setEditProject,
         loading,
         navigate,
+        btnLoading,
+        setBtnLoading,
+        handleProjectDelete,
       }}
     >
       {children}
