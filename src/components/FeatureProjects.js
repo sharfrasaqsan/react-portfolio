@@ -8,9 +8,9 @@ const FeatureProjects = () => {
     return (
       <section className="bg-light py-5">
         <div className="container">
-          <h3 className="mb-5 text-center fw-bold text-dark">
+          <h4 className="mb-5 text-center fw-bold text-dark">
             Featured Projects
-          </h3>
+          </h4>
           <div className="d-flex justify-content-center align-items-center vh-100">
             <div className="spinner-border text-primary" role="status"></div>
           </div>
@@ -27,9 +27,9 @@ const FeatureProjects = () => {
   return (
     <section className="bg-light py-5">
       <div className="container">
-        <h3 className="mb-5 text-center fw-bold text-dark">
+        <h4 className="mb-5 text-center fw-bold text-dark">
           Featured Projects
-        </h3>
+        </h4>
         <div className="row g-4">
           {featureProjects.reverse().map((project) => (
             <div
