@@ -1,58 +1,8 @@
-import {
-  FaReact,
-  FaHtml5,
-  FaCss3Alt,
-  FaJs,
-  FaWordpress,
-  FaGithub,
-  FaFigma,
-  FaCheckCircle,
-} from "react-icons/fa";
-import {
-  SiTailwindcss,
-  SiBootstrap,
-  SiJquery,
-  SiMongodb,
-  SiMysql,
-  SiAdobephotoshop,
-  SiPostgresql,
-  SiMagento,
-  SiShopify,
-} from "react-icons/si";
+import Education from "../components/Education";
+import Experience from "../components/Experience";
+import Resume from "../components/Resume";
 
 const AboutMe = () => {
-  const techSkills = [
-    { icon: <FaHtml5 color="#E34F26" />, name: "HTML5" },
-    { icon: <FaCss3Alt color="#1572B6" />, name: "CSS3" },
-    { icon: <FaJs color="#F7DF1E" />, name: "JavaScript" },
-    { icon: <FaReact color="#61DAFB" />, name: "React.js" },
-    { icon: <FaWordpress color="#21759B" />, name: "WordPress" },
-    { icon: <SiMagento color="#EE672F" />, name: "Magento 2" },
-    { icon: <SiMysql color="#00758F" />, name: "MySQL" },
-    { icon: <SiBootstrap color="#7952B3" />, name: "Bootstrap" },
-    { icon: <SiShopify color="#96BF48" />, name: "Shopify" },
-    { icon: <SiTailwindcss color="#38B2AC" />, name: "Tailwind CSS" },
-    { icon: <SiJquery color="#0769AD" />, name: "jQuery" },
-    { icon: <SiPostgresql color="#336791" />, name: "PostgreSQL" },
-    { icon: <SiMongodb color="#47A248" />, name: "MongoDB" },
-    { icon: <FaGithub color="#181717" />, name: "GitHub" },
-    { icon: <SiAdobephotoshop color="#31A8FF" />, name: "Photoshop" },
-    { icon: <FaFigma color="#F24E1E" />, name: "Figma" },
-  ];
-
-  const softSkills = [
-    "Effective Communication",
-    "Team Collaboration",
-    "Problem-Solving",
-    "Adaptability",
-    "Time Management",
-    "Attention to Detail",
-    "Creativity",
-    "Multitasking",
-    "Critical Thinking",
-    "Client-Focused Mindset",
-  ];
-
   return (
     <section className="container py-5">
       <div className="text-center mb-5">
@@ -63,7 +13,6 @@ const AboutMe = () => {
       </div>
 
       <section className="mb-5">
-        <h4 className="fw-semibold mb-3">Professional Summary</h4>
         <p className="text-muted" style={{ textAlign: "justify" }}>
           Experienced Web Developer with 3 years of expertise in front-end and
           full-stack web development, specializing in React.js, JavaScript,
@@ -74,96 +23,12 @@ const AboutMe = () => {
         </p>
       </section>
 
-      <section className="mb-5">
-        <h4 className="fw-semibold mb-3">Professional Experience</h4>
-        <div className="mb-3">
-          <h6 className="fw-bold mb-1">Web Developer | Oscar Wylee (Remote)</h6>
-          <small className="text-muted">Sep 2022 – Present</small>
-          <ul className="mt-2">
-            <li>Built and maintained Magento 2 and WordPress websites.</li>
-            <li>Integrated React.js with RESTful APIs for dynamic features.</li>
-            <li>Optimized performance and applied SEO best practices.</li>
-            <li>
-              Collaborated with cross-functional teams for brand consistency.
-            </li>
-          </ul>
-        </div>
-        <div>
-          <h6 className="fw-bold mb-1">Intern | KINIT Pvt Ltd</h6>
-          <small className="text-muted">Dec 2021 – Jun 2022</small>
-          <ul className="mt-2">
-            <li>Built reusable components with React.js.</li>
-            <li>Assisted with performance improvements and UX enhancement.</li>
-          </ul>
-        </div>
+      <section className="mb-5 text-center">
+        <Resume />
       </section>
 
-      <section className="mb-5">
-        <h4 className="fw-semibold mb-3">Education</h4>
-        <p>
-          <strong>
-            BICT (Hons) – Bachelor of Information and Communication Technology
-            (Honors) – Specialization in Software Systems
-          </strong>
-          <br />
-          University of Kelaniya, 2018 – 2022
-          <br />
-          GPA: <strong>3.14</strong> (Second Class)
-        </p>
-      </section>
-
-      <section className="mb-5">
-        <h4 className="fw-semibold mb-3">Tech Stack</h4>
-        <div className="d-flex flex-wrap justify-content-center gap-4">
-          {techSkills.map((tech, i) => (
-            <div key={i} className="text-center">
-              <div className="fs-3">{tech.icon}</div>
-              <small
-                className="d-block text-muted"
-                style={{ fontSize: "0.8rem" }}
-              >
-                {tech.name}
-              </small>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="mb-5">
-        <h4 className="fw-semibold mb-3">Soft Skills</h4>
-        <div className="row row-cols-1 row-cols-sm-2 g-3">
-          {softSkills.map((skill, i) => (
-            <div key={i} className="d-flex align-items-start">
-              <FaCheckCircle className="text-success me-2 mt-1" />{" "}
-              <span>{skill}</span>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      <section className="mb-5">
-        <h4 className="fw-semibold mb-3">Certifications</h4>
-        <ul className="text-muted ps-3">
-          <li>
-            <a
-              href="https://www.coursera.org/account/accomplishments/certificate/RLQUSVH6U6VU"
-              className="text-decoration-none"
-            >
-              Intro to Front-End Development
-            </a>{" "}
-            – Coursera (Meta)
-          </li>
-          <li>
-            <a
-              href="https://open.uom.lk/mod/customcert/view.php?id=697&downloadown=1"
-              className="text-decoration-none"
-            >
-              Web Design for Beginners
-            </a>{" "}
-            – UOM
-          </li>
-        </ul>
-      </section>
+      <Experience />
+      <Education />
     </section>
   );
 };

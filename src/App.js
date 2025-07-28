@@ -2,6 +2,8 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import { ToastContainer, Bounce } from "react-toastify";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
@@ -17,6 +19,7 @@ import CreateProject from "./pages/CreateProject";
 import NotFound from "./pages/NotFound";
 import { PrivateRoute } from "./utils/PrivateRoute";
 import EdifProject from "./pages/EdifProject";
+import Skills from "./pages/Skills";
 
 function App() {
   return (
@@ -27,6 +30,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<AboutMe />} />
+        <Route path="/skills" element={<Skills />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/project/:id" element={<ProjectDetails />} />
         <Route
