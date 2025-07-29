@@ -118,7 +118,7 @@ const ProjectDetails = () => {
           {user && (
             <>
               <Link
-                to={`/project/${project.id}/edit`}
+                to={`/admin/project/${project.id}/edit`}
                 className="flex-fill text-decoration-none"
               >
                 <button type="button" className="btn btn-warning w-100">
