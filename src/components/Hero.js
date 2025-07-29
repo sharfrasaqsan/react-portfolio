@@ -1,5 +1,6 @@
 import React from "react";
-import { FaArrowDown, FaDownload } from "react-icons/fa";
+import { FaArrowDown } from "react-icons/fa";
+import Resume from "./Resume";
 import { Link } from "react-router-dom";
 
 const Hero = () => {
@@ -23,10 +24,7 @@ const Hero = () => {
               <strong>RESTful APIs</strong>, and <strong>Firebase</strong>.
             </p>
             <div className="d-flex justify-content-center gap-3 flex-wrap">
-              <a href="/your-resume.pdf" className="btn btn-primary" download>
-                <FaDownload className="me-2" />
-                Download CV
-              </a>
+              <Resume />
               <Link to="/projects" className="btn btn-outline-secondary">
                 View Projects
               </Link>
