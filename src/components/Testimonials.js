@@ -45,7 +45,7 @@ const Testimonials = () => {
   };
 
   return (
-    <section className="py-5 bg-light" id="testimonials">
+    <section className="py-5" id="testimonials">
       <div className="container">
         <h4 className="mb-5 text-center fw-bold text-dark">What People Say</h4>
         <Slider {...settings}>
