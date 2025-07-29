@@ -7,14 +7,18 @@ const Projects = () => {
   if (loading) {
     return (
       <section className="bg-light py-5">
-        <div className="container">
-          <h2 className="mb-5 text-center fw-bold text-dark">My Projects</h2>
-          <div
-            className="d-flex justify-content-center align-items-center"
-            style={{ minHeight: "50vh" }}
-          >
-            <div className="spinner-border text-primary" role="status"></div>
-          </div>
+        <div className="text-center mb-5">
+          <h2 className="fw-bold">My Projects</h2>
+          <p className="text-muted">
+            Bringing Ideas to Life with Clean, Scalable Code
+          </p>
+        </div>
+
+        <div
+          className="d-flex justify-content-center align-items-center"
+          style={{ minHeight: "50vh" }}
+        >
+          <div className="spinner-border text-primary" role="status"></div>
         </div>
       </section>
     );
@@ -24,9 +28,15 @@ const Projects = () => {
     return <p className="text-center mt-5">No projects to show!</p>;
 
   return (
-    <section className="bg-light py-5">
+    <section className="bg-light py-5 mb-3">
+      <div className="text-center mb-5">
+        <h2 className="fw-bold">My Projects</h2>
+        <p className="text-muted">
+          Bringing Ideas to Life with Clean, Scalable Code
+        </p>
+      </div>
+
       <div className="container">
-        <h2 className="mb-5 text-center fw-bold text-dark">My Projects</h2>
         <div className="row g-4">
           {projects.map((project) => (
             <div

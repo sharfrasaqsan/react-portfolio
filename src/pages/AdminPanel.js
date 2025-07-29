@@ -27,7 +27,10 @@ const AdminPanel = () => {
 
   return (
     <section className="container py-5">
-      <h2 className="mb-4 text-center fw-bold text-dark">Admin Panel</h2>
+      <div className="text-center mb-5">
+        <h2 className="fw-bold">Admin Panel</h2>
+        <p className="text-muted">Dashboard Interface for Managing Content</p>
+      </div>
 
       <div className="d-flex justify-content-between align-items-center mb-4">
         <h3>Projects</h3>

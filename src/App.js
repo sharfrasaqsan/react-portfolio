@@ -20,10 +20,12 @@ import NotFound from "./pages/NotFound";
 import { PrivateRoute } from "./utils/PrivateRoute";
 import EdifProject from "./pages/EdifProject";
 import Skills from "./pages/Skills";
+import ScrollToTop from "./utils/ScrollToTop";
 
 function App() {
   return (
     <div className="App">
+      <ScrollToTop />
       <Header />
       <Nav />
 
@@ -41,7 +43,7 @@ function App() {
             </PrivateRoute>
           }
         />
-        <Route path="/admin/project/edit/:id" element={<EdifProject />} />
+        <Route path="/admin/project/:id/edit" element={<EdifProject />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<AdminLogin />} />
         <Route
