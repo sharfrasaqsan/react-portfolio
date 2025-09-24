@@ -1,70 +1,161 @@
-# Getting Started with Create React App
+# React Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A personal portfolio website built with React.
 
-## Available Scripts
+## Features and Functionality
 
-In the project directory, you can run:
+*   **Home Page:** Displays a hero section with a brief introduction and links to view projects and download a resume. Includes an "About Me" section, featured projects, testimonials, and a contact section.
+*   **About Me Page:** Provides a detailed overview of my experience, education, and skills. Includes a downloadable resume.
+*   **Skills Page:** Showcases technical and soft skills.
+*   **Projects Page:** Lists all projects with links to live demos and GitHub repositories.
+*   **Project Details Page:** Provides detailed information about each project, including a description, features, tech stack, live demo link, and GitHub repository link.
+*   **Contact Page:** A contact form to send me a message.
+*   **Admin Panel:** (Protected Route) Allows authorized users to manage projects (create, edit, delete).
+*   **Admin Login:** (Authentication Required) Allows authorized admin login to manage projects.
+*   **Responsive Design:** The website is designed to be responsive and accessible on different devices.
+*   **ScrollToTop:** Component for navigating pages from the top.
+*   **Testimonials:** Display customer testimonials using `react-slick` library
+*   **Firebase Integration:** Utilizes Firebase for authentication (admin login) and data storage (projects).
+*   **Toast Notifications:** Provides user feedback using `react-toastify`.
+*   **PrivateRoute:** For accessing AdminPanel only accessible for logged in users.
+*   **NotFound:** Component for accessing unknown routes.
 
-### `npm start`
+## Technology Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+*   **React.js:** A JavaScript library for building user interfaces.
+*   **React Router:** For navigation.
+*   **Bootstrap:** A CSS framework for responsive design.
+*   **Firebase:** A platform for building web and mobile applications.
+*   **react-toastify:** For toast notifications.
+*   **slick-carousel:** For testimonials.
+*   **HTML5:** For structuring the web pages.
+*   **CSS3:** For styling the web pages.
+*   **JavaScript:** For adding interactivity to the web pages.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Prerequisites
 
-### `npm test`
+*   Node.js (v16 or higher)
+*   npm or yarn
+*   Firebase project configured with:
+    *   Authentication enabled
+    *   Firestore database created
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Installation Instructions
 
-### `npm run build`
+1.  Clone the repository:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+    ```bash
+    git clone https://github.com/sharfrasaqsan/react-portfolio.git
+    cd react-portfolio
+    ```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2.  Install dependencies:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+    ```bash
+    npm install
+    # or
+    yarn install
+    ```
 
-### `npm run eject`
+3.  Configure Firebase:
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+    *   Create a `.env` file in the project root.
+    *   Add your Firebase configuration to the `.env` file. Example:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+        ```
+        REACT_APP_FIREBASE_API_KEY="YOUR_API_KEY"
+        REACT_APP_FIREBASE_AUTH_DOMAIN="YOUR_AUTH_DOMAIN"
+        REACT_APP_FIREBASE_PROJECT_ID="YOUR_PROJECT_ID"
+        REACT_APP_FIREBASE_STORAGE_BUCKET="YOUR_STORAGE_BUCKET"
+        REACT_APP_FIREBASE_MESSAGING_SENDER_ID="YOUR_MESSAGING_SENDER_ID"
+        REACT_APP_FIREBASE_APP_ID="YOUR_APP_ID"
+        REACT_APP_FIREBASE_MEASUREMENT_ID="YOUR_MEASUREMENT_ID"
+        ```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+    *   **Important:**  The provided `src/firebase.js` file currently contains placeholder Firebase configuration values.  **Replace these with your actual Firebase project credentials** for the application to function correctly.  This includes `apiKey`, `authDomain`, `projectId`, `storageBucket`, `messagingSenderId`, `appId`, and `measurementId`.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+## Usage Guide
 
-## Learn More
+1.  Start the development server:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    ```bash
+    npm start
+    # or
+    yarn start
+    ```
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+2.  Open your browser and navigate to `http://localhost:3000`.
 
-### Code Splitting
+3.  **Admin Panel:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+    *   Navigate to `/login`.
+    *   Enter the email and password for an authorized admin user. **Note:** You will need to create an admin user in your Firebase project and add the user information in the `admin` collection of your Firestore database. Example:
 
-### Analyzing the Bundle Size
+        ```json
+        // Document ID: user.uid (from Firebase Authentication)
+        {
+          "email": "admin@example.com",
+          "name": "Admin User"
+        }
+        ```
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+    *   After logging in, navigate to `/admin` to access the admin panel.
 
-### Making a Progressive Web App
+4.  **Project Management:**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+    *   **Create Project:**  Click the "+ Add Project" button on the admin panel to create a new project.  Fill in the form fields (title, thumbnail, short description, description, live URL, GitHub URL, tech stack, features, is featured) and submit the form.
+    *   **Edit Project:**  Click the "Edit" button on the admin panel or the project details page to edit an existing project.  Update the form fields and submit the form.
+    *   **Delete Project:**  Click the "Delete" button on the admin panel or the project details page to delete a project.
 
-### Advanced Configuration
+## API Documentation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+This project utilizes Firebase Firestore as its backend database. Below are the details of the collections and their fields:
 
-### Deployment
+*   **Collections:**
+    *   `admin`: Stores admin user information.
+    *   `projects`: Stores project data.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+*   **`admin` Collection:**
+    *   Each document represents an admin user.
+    *   Fields:
+        *   `email` (string): The admin user's email address.
+        *   `name` (string): The admin user's name.
+    *   Document ID: The user ID from Firebase Authentication.
 
-### `npm run build` fails to minify
+*   **`projects` Collection:**
+    *   Each document represents a project.
+    *   Fields:
+        *   `title` (string): The title of the project.
+        *   `thumbnail` (string): URL of the project thumbnail image.
+        *   `shortDescription` (string): A brief description of the project.
+        *   `description` (string): A detailed description of the project.
+        *   `liveURL` (string): URL of the live demo of the project.
+        *   `githubURL` (string): URL of the GitHub repository for the project.
+        *   `techStack` (array of strings): An array of technologies used in the project (e.g., `["React", "Firebase"]`).
+        *   `features` (string): A list of key features of the project, with each feature on a new line.
+        *   `createdAt` (string): The date the project was created (format: YYYY-MM-DD).
+        *   `updatedAt` (string, optional): The date the project was last updated (format: YYYY-MM-DD).
+        *   `isFeatured` (boolean): Indicates whether the project is featured on the home page.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## Contributing Guidelines
+
+Contributions are welcome!  Please follow these guidelines:
+
+1.  Fork the repository.
+2.  Create a new branch for your feature or bug fix.
+3.  Make your changes and commit them with descriptive messages.
+4.  Test your changes thoroughly.
+5.  Submit a pull request to the `main` branch.
+
+## License Information
+
+This project has no specified license.
+
+## Contact/Support Information
+
+*   Mohamed Sharfiras
+*   Email: [sharfrasaqsan@gmail.com](mailto:sharfrasaqsan@gmail.com)
+*   Phone: +94 751 230 001
+*   GitHub: [https://github.com/sharfrasaqsan](https://github.com/sharfrasaqsan)
+*   LinkedIn: [https://www.linkedin.com/in/sharfiras/](https://www.linkedin.com/in/sharfiras/)
+*   Facebook: [https://facebook.com/sharfras.aqsan97/](https://facebook.com/sharfras.aqsan97/)
